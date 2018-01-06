@@ -141,6 +141,10 @@ div.introAnimationBox {
   position: relative;
 }
 
+.urlClicked {
+  background-color: #4bc0c0;
+}
+
 .pageBodymainSection {
   background-color: #2d3143;
 }
