@@ -1,0 +1,337 @@
+html,
+body {
+  background-color: #1c1f2b;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+p {
+  color: #bdcadb;
+  font-size: 1.4em;
+  margin: 0;
+}
+
+.flexRow {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.flexCol {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
+  user-select: none;
+}
+
+.body {
+  align-items: flex-start;
+}
+
+.highlight {
+  color: #4bc0c0;
+}
+
+/*        SIDE BAR        */
+.sideBar {
+  background-color: #2d3143;
+  color: #bdcadb;
+  height: 100vh;
+  justify-content: flex-start;
+  padding-top: 5em;
+  width: 20vw;
+}
+
+.sideBar p {
+  font-size: 1em;
+  margin: 1em;
+}
+
+/*        MAIN CONTENT        */
+.mainContent {
+  height: auto;
+  height: 100vh;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  width: 80vw;
+}
+
+.mainContent .section,
+.mainContent .introAnimationBox {
+  margin: 6em auto;
+}
+
+
+
+div.section {
+  color: #2d3143;
+  margin: 6em auto;
+  width: 60%;
+}
+
+.intro {
+  margin: 10em 0 2em 0;
+}
+
+.intro h1 {
+  color: #fffffa;
+  font-size: 4em;
+  font-weight: 100;
+  margin-top: 3em;
+}
+
+/*        INTRO ANIMATION BOX       */
+div.introAnimationBox {
+  background-color: #14161f;
+  height: 34em;
+  justify-content: space-around;
+  width: 50em;
+}
+
+.url,
+.pageBody,
+.pageBodymainSection,
+.pageBodySideSection,
+.sideSectionTop,
+.sideSectionBottom {
+  border-radius: 0.2em;
+}
+
+.url,
+.pageBody {
+  background-color: #35394d;
+  width: 90%;
+}
+
+.url {
+  height: 10%;
+  justify-content: flex-start;
+}
+
+.pageBody {
+  height: 80%;
+  justify-content: space-around;
+}
+
+.urlCircle {
+  background-color: #2d3143;
+  border-radius: 50%;
+  height: 2.5em;
+  left: 1em;
+  position: relative;
+  width: 2.5em;
+}
+
+.url p {
+  color: #4bc0c0;
+  left: 3em;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+.pageBodymainSection {
+  background-color: #2d3143;
+}
+
+.pageBodymainSection,
+.pageBodySideSection {
+  height: 90%;
+  width: 46%;
+}
+
+.pageBodySideSection {
+  justify-content: space-around;
+}
+
+.sideSectionTop,
+.sideSectionBottom {
+  background-color: #2d3143;
+  height: 45%;
+  width: 60%;
+}
+
+/*        SECTION       */
+.miniSection {
+  align-items: flex-start;
+}
+
+.miniSection h1 {
+  color: #4bc0c0;
+  font-size: 2.2em;
+  font-weight: 100;
+}
+
+div.section.table {
+  margin-top: 10em auto;
+}
+
+.details {
+  color: #7b96b7;
+  font-size: 1.2em;
+  transition: font-size 0.1s;
+}
+
+.details:hover {
+  color: #bdcadb;
+  font-size: 1.4em;
+}
+
+/*        PRICE TABLE       */
+.row {
+  height: 8em;
+  width: 52em;
+}
+
+.row div {
+  color: #bdcadb;
+  height: 100%;
+  width: 33.33%;
+}
+
+.row div p {
+  background-color: #2d3143;
+  padding: 0.4em;
+}
+
+.odd {
+  background-color: #2d3143;
+}
+
+.even {
+  background-color: #35394d;
+}
+
+/*        MESSAGE FORM SECTIONS       */
+.navTag:hover {
+  color: #bdcadb;
+  font-weight: 400;
+}
+
+.sendEmailBtn,
+.sendTextBtn {
+  height: 3.2em;
+  width: 6em;
+}
+
+.selectedSendBtn {
+  background-color: #35394d;
+  border-radius: 0.1em;
+}
+
+.selectedSendBtn p {
+  color: #4bc0c0;
+}
+
+div.form,
+div.screen {
+  margin-top: 3em;
+  width: 45%;
+}
+
+div.sendBtnSection {
+  margin-top: 3em;
+  width: 10%;
+}
+
+div.form,
+div.screen,
+div.sendBtnSection {
+  height: 24em;
+}
+
+.form input,
+.form textarea {
+  background-color: #2d3143;
+  border: none;
+  border-radius: 0.1em;
+  box-shadow: none;
+  color: #bdcadb;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  margin: 0.25em 0;
+  outline: 0;
+  text-align: center;
+}
+
+.form textarea {
+  height: 4em;
+  width: 10.2em;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #bdcadb;
+  opacity: 0.4;
+}
+
+.sendBtn {
+  background-color: #2d3143;
+  border-radius: 0.1em;
+  padding: 1em;
+}
+
+.arrowSection {
+  justify-content: space-around;
+  width: 3.2em;
+  margin-right: 3.2em;
+}
+
+.device,
+.deviceScreen {
+  border-radius: 0.6em;
+}
+
+.device {
+  background-color: #35394d;
+  height: 18em;
+  width: 12em;
+}
+
+.deviceScreen {
+  background-color: #2d3143;
+  height: 95%;
+  width: 94%;
+}
+
+.deviceScreen p {
+  color: #4bc0c0;
+  font-size: 2em;
+}
+
+/*        SIGN UP SECTION       */
+.ul {
+  margin-top: 1em;
+}
+
+/*CONTACT SECTION*/
+.highlightEmail {
+  color: #4bc0c0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.contactText {
+  letter-spacing: 3px;
+}
+
+/*        FOOTER        */
+div.footer {
+  background-color: #14161f;
+  height: 15em;
+  justify-content: flex-start;
+  margin-top: 10em;
+  width: 100%;
+}
+
+.footer p {
+  margin: 4em;
+}
