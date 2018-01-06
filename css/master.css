@@ -39,6 +39,11 @@ p {
   color: #4bc0c0;
 }
 
+/*        NAVIGATION POINTS       */
+.navigationPoint:hover {
+  color: #4bc0c0;
+}
+
 /*        SIDE BAR        */
 .sideBar {
   background-color: #2d3143;
