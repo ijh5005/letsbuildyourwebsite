@@ -12,10 +12,14 @@ app.controller('ctrl', ['$scope', 'navigate', 'data', function($scope, navigate,
 app.service('navigate', function(){
   this.toTag = (e) => {
     const dataValue = e.currentTarget.attributes.data.nodeValue;
-    this.toTagWithDataValue(dataValue);
+    const selector = $(".textHeading[data=" + dataValue + "]");
+    this.navigateTo(selector);
   }
   this.toTagWithDataValue = (dataValue) => {
-    const selector = $(".textHeading[data=" + dataValue + "]");
+    const selector = $("div[data=" + dataValue + "]");
+    this.navigateTo(selector);
+  }
+  this.navigateTo = (selector) => {
     const offsetTop = parseInt(selector[0].offsetTop);
     const element = document.getElementById('mainContent');
     element.scrollTop = offsetTop - 140;
