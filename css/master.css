@@ -50,7 +50,7 @@ p {
   color: #bdcadb;
   height: 100vh;
   justify-content: flex-start;
-  padding-top: 5em;
+  padding-top: 10em;
   width: 20vw;
 }
 
@@ -178,34 +178,34 @@ div.introAnimationBox {
 }
 
 div.section.table {
-  margin-top: 10em auto;
+  border: 0.01em solid #215e5e;
+  position: relative;
 }
 
 .details {
   color: #7b96b7;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   transition: font-size 0.1s;
 }
 
 .details:hover {
   color: #bdcadb;
-  font-size: 1.4em;
+  font-size: 1.4rem;
 }
 
 /*        PRICE TABLE       */
 .row {
-  height: 8em;
   width: 52em;
 }
 
 .row div {
   color: #bdcadb;
   height: 100%;
-  width: 33.33%;
 }
 
 .row div p {
   background-color: #2d3143;
+  margin: 0.1em;
   padding: 0.4em;
 }
 
@@ -215,6 +215,15 @@ div.section.table {
 
 .even {
   background-color: #35394d;
+}
+
+.row1,
+.row2 {
+  width: 25%;
+}
+
+.row3 {
+  width: 50%;
 }
 
 /*        MESSAGE FORM SECTIONS       */
@@ -249,12 +258,6 @@ div.sendBtnSection {
   width: 10%;
 }
 
-div.form,
-div.screen,
-div.sendBtnSection {
-  height: 24em;
-}
-
 .form input,
 .form textarea {
   background-color: #2d3143;
@@ -263,15 +266,17 @@ div.sendBtnSection {
   box-shadow: none;
   color: #bdcadb;
   font-family: 'Roboto', sans-serif;
-  font-size: 2em;
+  font-size: 1.4em;
   margin: 0.25em 0;
+  min-height: 2em;
   outline: 0;
   text-align: center;
+  text-transform:uppercase;
+  width: 100%;
 }
 
 .form textarea {
   height: 4em;
-  width: 10.2em;
 }
 
 input::placeholder,
@@ -282,6 +287,7 @@ textarea::placeholder {
 
 .sendBtn {
   background-color: #2d3143;
+  border: 0.01em solid #215e5e;
   border-radius: 0.1em;
   padding: 1em;
 }

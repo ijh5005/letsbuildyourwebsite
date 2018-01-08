@@ -57,17 +57,25 @@
 
       <div data="cost"></div>
       <!-- PRICE TABLE -->
-      <div id="table" class="section table">
+      <div id="table" class="section table" style="top: -4em; width: 52em">
         <div class="row flexRow odd">
-          <div class="row1 flexRow"><p>price</p></div>
-          <div class="row2 flexRow"><p>service</p></div>
-          <div class="row3 flexRow"><p>description</p></div>
+          <div class="row1 flexRow"><p>Price</p></div>
+          <div class="row2 flexRow"><p>Service</p></div>
+          <div class="row3 flexRow"><p>Description</p></div>
         </div>
-        <div class="row flexRow even">
-          <div class="row1 flexRow"><p>price</p></div>
-          <div class="row2 flexRow"><p>service</p></div>
-          <div class="row3 flexRow"><p>description</p></div>
+        <div class="" ng-repeat="service in services">
+          <div class="row flexRow odd" ng-if="$odd">
+            <div class="row1 flexRow"><p>{{service.price}}</p></div>
+            <div class="row2 flexRow"><p>{{service.service}}</p></div>
+            <div class="row3 flexRow"><p>{{service.description}}</p></div>
+          </div>
+          <div class="row flexRow even" ng-if="$even">
+            <div class="row1 flexRow"><p>{{service.price}}</p></div>
+            <div class="row2 flexRow"><p>{{service.service}}</p></div>
+            <div class="row3 flexRow"><p>{{service.description}}</p></div>
+          </div>
         </div>
+
       </div>
 
       <div data="example"></div>
@@ -81,6 +89,7 @@
           <h1 data="5" class="textHeading"><span data="5" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>TEXT CUSTOMERS</h1>
           <p>Text appointment reminders or daily sales.</p>
         </div>
+        <p class="details">The following forms are linked to my email and cell phone. Try sending me a message with your name, contact, questions, and comments. I will get back to you as soon as I can!</p>
         <div class="flexRow">
           <div class="form flexCol">
             <input type="text" name="" value="" placeholder="first name">
@@ -131,19 +140,16 @@
         </div>
       </div>
 
-      <!-- PURCHASE -->
-      <div class="section">
-        <div class="miniSection flexCol">
-          <h1 data="7" class="textHeading"><span data="7" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>PURCHASE SECTION</h1>
-          <p>purchase</p>
-        </div>
-      </div>
-
       <!-- CONCLUSION SECTION -->
       <div class="section">
         <div class="miniSection flexCol">
-          <h1 data="8" class="textHeading"><span data="8" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>CONCLUSION SECTION</h1>
-          <p>conclusion</p>
+          <h1 data="7" class="textHeading"><span data="7" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>CONCLUSION</h1>
+          <p class="details">What are you waiting for?</p>
+          <ul class="details">
+            <li class="details">By having a website you can skip the process of creating and distributing brochures.</li>
+            <li class="details">Your potential customers can find out about you and any of your products online.</li>
+            <li class="details">Also, your networking connections will want to check out your website.</li>
+          </ul>
         </div>
       </div>
 
