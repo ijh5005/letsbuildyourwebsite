@@ -212,7 +212,7 @@ div.section.table {
   padding: 0.4em;
 }
 
-.row .row3 p {
+.row .row2 p {
   background-color: transparent;
   color: #bdcadb;
 }
@@ -225,16 +225,25 @@ div.section.table {
   background-color: #35394d;
 }
 
-.row1,
-.row2 {
-  width: 25%;
+.row1 {
+  width: 30%;
 }
 
-.row3 {
+.row2 {
   width: 50%;
 }
 
+.row3 {
+  width: 20%;
+}
+
 /*        MESSAGE FORM SECTIONS       */
+.navTag {
+  position: relative;
+  left: -1em;
+  opacity: 0;
+}
+
 .navTag:hover {
   color: #bdcadb;
   font-weight: 400;
@@ -357,4 +366,41 @@ div.footer {
 
 .footer p {
   margin: 4em;
+}
+
+
+@media screen and (max-width: 1110px) {
+    .sideBar,
+    .introAnimationBox {
+      display: none;
+    }
+    .mainContent {
+      width: 100%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .screen {
+      display: none;
+    }
+    div.form, div.screen {
+      width: 18em;
+    }
+    .sendBtn {
+      margin-left: 2em;
+    }
+    div.section {
+      width: 90%;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .intro h1 {
+      font-size: 3em;
+    }
+    #table,
+    .row {
+      width: 100%;
+      margin: 0;
+    }
 }

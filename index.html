@@ -17,7 +17,7 @@
       <div class="intro section">
         <div data="home"></div>
         <h1>Let's build your website</h1>
-        <p>you've thought up a website to serve business needs... you've writen details outlining its content, purpose, and audience... you've done enough... let me build it</p>
+        <p>you've thought up a website to serve business needs... you've written details outlining its content, purpose, and audience... you've done enough... now let me build it.</p>
       </div>
 
       <!-- INTRO ANIMATION BOX -->
@@ -59,20 +59,20 @@
       <!-- PRICE TABLE -->
       <div id="table" class="section table" style="top: -4em; width: 52em">
         <div class="row flexRow odd">
-          <div class="row1 flexRow"><p>Price</p></div>
-          <div class="row2 flexRow"><p>Service</p></div>
-          <div class="row3 flexRow"><p>Description</p></div>
+          <div class="row1 flexRow"><p>Service</p></div>
+          <div class="row2 flexRow"><p>Description</p></div>
+          <div class="row3 flexRow"><p>Starting Price</p></div>
         </div>
         <div class="" ng-repeat="service in services">
           <div class="row flexRow odd" ng-if="$odd">
-            <div class="row1 flexRow"><p>{{service.price}}</p></div>
-            <div class="row2 flexRow"><p>{{service.service}}</p></div>
-            <div class="row3 flexRow"><p>{{service.description}}</p></div>
+            <div class="row1 flexRow"><p>{{service.service}}</p></div>
+            <div class="row2 flexRow"><p>{{service.description}}</p></div>
+            <div class="row3 flexRow"><p>{{service.price}}</p></div>
           </div>
           <div class="row flexRow even" ng-if="$even">
-            <div class="row1 flexRow"><p>{{service.price}}</p></div>
-            <div class="row2 flexRow"><p>{{service.service}}</p></div>
-            <div class="row3 flexRow"><p>{{service.description}}</p></div>
+            <div class="row1 flexRow"><p>{{service.service}}</p></div>
+            <div class="row2 flexRow"><p>{{service.description}}</p></div>
+            <div class="row3 flexRow"><p>{{service.price}}</p></div>
           </div>
         </div>
 
@@ -87,7 +87,7 @@
         </div>
         <div class="miniSection flexCol">
           <h1 data="5" class="textHeading"><span data="5" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>TEXT CUSTOMERS</h1>
-          <p>Text appointment reminders or daily sales.</p>
+          <p>Text appointment reminders and daily sales.</p>
         </div>
         <p class="details">The following forms are linked to my email and cell phone. Try sending me a message with your name, contact, questions, and comments. I will get back to you as soon as I can!</p>
         <div class="flexRow">
@@ -128,27 +128,14 @@
       <div class="section">
         <div class="miniSection flexCol">
           <h1 data="6" class="textHeading"><span data="6" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>SIGN UP</h1>
-          <p>Signing up to a site could give your customers a personalized feel on your website</p>
+          <p>Signing up to a site gives your customers a personalized feel on your website</p>
           <p class="details ul">5 Benefits for user sign up</p>
           <ul>
             <li class="details">Faster checkout via shipping address/personal information pre-population</li>
             <li class="details">Thank you emails for returning customers to build customer loyalty</li>
             <li class="details">Advertise upcoming sales with email notification</li>
             <li class="details">Personalized the user's profile by having customizable options such as page theme</li>
-            <li class="details">Reciept storage in one spot to save customer time looking through emails</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CONCLUSION SECTION -->
-      <div class="section">
-        <div class="miniSection flexCol">
-          <h1 data="7" class="textHeading"><span data="7" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>CONCLUSION</h1>
-          <p class="details">What are you waiting for?</p>
-          <ul class="details">
-            <li class="details">By having a website you can skip the process of creating and distributing brochures.</li>
-            <li class="details">Your potential customers can find out about you and any of your products online.</li>
-            <li class="details">Also, your networking connections will want to check out your website.</li>
+            <li class="details">Reciept storage in one spot to save the customer time looking through emails</li>
           </ul>
         </div>
       </div>
@@ -157,11 +144,12 @@
       <div data="contact"></div>
       <div class="section">
         <div class="miniSection flexCol">
-          <h1 data="9" class="textHeading"><span data="9" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>CONTACT</h1>
-          <p>any questions?</p>
+          <h1 data="7" class="textHeading"><span data="7" class="navTag pointer" ng-click="bringToTopOfPage($event)"># </span>CONTACT</h1>
+          <p>questions?</p>
           <p class="details">If you have any questions at all do not hesitate to call, text, or email me!</p>
+          <p class="details">You could also send me a message through the email and text forms above</p>
           <a href="tel:+8147530157"><p class="details contactText">814 753 0157</p></a>
-          <p class="details contactText">lets<span class="highlightEmail">build</span>your<span class="highlightEmail">website</span>@gmail.com</p>
+          <p class="details contactText">lets<span class="highlightEmail">build</span>your<span class="highlightEmail">website</span>@outlook.com</p>
         </div>
       </div>
 

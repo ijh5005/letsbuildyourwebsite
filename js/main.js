@@ -2,7 +2,7 @@
 
 var app = angular.module('app', []);
 
-app.controller('ctrl', ['$rootScope', '$scope', 'navigate', 'data', 'task', function($rootScope, $scope, navigate, data, task){
+app.controller('ctrl', ['$rootScope', '$scope', '$interval', 'navigate', 'data', 'task', function($rootScope, $scope, $interval, navigate, data, task){
   $rootScope.url = 'yourwebsite.com';
   $scope.navigationPoints = data.navigationPoints;
   $scope.services = data.services;
@@ -10,6 +10,9 @@ app.controller('ctrl', ['$rootScope', '$scope', 'navigate', 'data', 'task', func
     (dataValue === undefined) ? navigate.toTagWithEvent(e) : navigate.toTagWithDataValue(dataValue);
   }
   task.typeUrl();
+  task.watchForTagAnimation();
+  // console.log(window);
+  $interval(() => { console.log(); }, 1000)
 }])
 
 app.service('navigate', function(){
@@ -38,18 +41,18 @@ app.service('data', function(){
     {data: 4, point: 'contact'}
   ]
   this.services = [
-    {service: "page", price: "$50", description: "Each page is currently $50 each. If you are just looking for a landing page $50 is a great deal."},
-    {service: "cross platform layouts", price: "$50", description: "You will get a website optimized for desktop for free. Additional device optimizations will cost $50 each."},
-    {service: "sign in/sign up", price: "$50", description: "A personalized site could help speed up the checkout process if the customer's personal information (such as address) is already populated in the shopping cart field. It could also help connect you with your customers better."},
-    {service: "email notifications", price: "$50", description: "Email you custmoers with promotional sales and member's only deals for their customer loyalty."},
-    {service: "text notifications", price: "$50", description: "Text customers with email reminder for appointments or exclusive sales you know that wouldn't want to miss."},
-    {service: "payment/shopping cart", price: "$80", description: "Why have a business if you are not getting paid? This deal gets you a shopping cart page and payment service."},
-    {service: "mini animations", price: "$50", description: "Help build a better user experience with smooth animations or just wow you customers with a very modern functioning website."},
-    {service: "contact/feedback forms", price: "$50", description: "Would you like a convience way for your customers to contact you with any questions or concerns? This service sets up 2 contact forms (feedback and contact) on your website."}
+    {service: "website pages", price: "$50 each", description: "Includes a custom design. All content (ex: text, images, videos) you provide me with will be added."},
+    {service: "payment/shopping cart", price: "$80", description: "Includes shopping cart and payment pages. I will also set up a third party payment service that is linked directly to your bank card. The service gives you access to customer payment history, receipts, refunds, and more."},
+    {service: "device friendly layout", price: "$25 each", description: "Have a website that also looks great on mobile phones and tablets."},
+    {service: "sign in/sign up", price: "$50", description: "Having an account connects you with your customers, gives them a since of ownerships, and offers them convenience such as faster checkout processes."},
+    {service: "email notifications", price: "$50", description: "Email your customers with promotional sales and members’ only deals for their customer loyalty. This feature is a computer and mobile web app. It will not display on your website."},
+    {service: "text notifications", price: "$50", description: "Text customers with appointment reminders, thank you notes, and exclusive deals. This feature is a computer and mobile web app. It will not display on your website."},
+    {service: "page animations", price: "$50", description: "Customers spend more on easy to use websites. Animations build an easy and smooth feelings experience. They also look nice :)"},
+    {service: "contact and feedback forms", price: "$50", description: "Offers a convenient way for customers to contact you with any questions any concerns. I will set up a feedback form and a contact form on any page of your website."}
   ]
 })
 
-app.service('task', function($rootScope, $timeout){
+app.service('task', function($rootScope, $timeout, $interval, animation){
   this.typeUrl = () => {
     $('.pageContent').hide();
     let delayTimes = [100, 200, 300, 400];
@@ -66,7 +69,6 @@ app.service('task', function($rootScope, $timeout){
         text = $rootScope.url.slice(0, i);
       }
       if(i === $rootScope.url.length + 1){
-        console.log('done');
         $('.urlCircle').css('opacity', 0.6).addClass('urlClicked');
         $timeout(() => { $('.urlCircle').css('opacity', 1).removeClass('urlClicked') }, 200);
         $timeout(() => { $('.pageContent').fadeIn() }, 500);
@@ -79,5 +81,25 @@ app.service('task', function($rootScope, $timeout){
 
     }
     $timeout(() => { typeText() }, 1000);
+  }
+  this.watchForTagAnimation = () => {
+    const watchForAnimation = $interval(() => {
+      const positionFromTopOfPage = $('.mainContent').scrollTop();
+      if(positionFromTopOfPage > 800){
+        $interval.cancel(watchForAnimation);
+        animation.tag('.navTag');
+      }
+    })
+  }
+})
+
+app.service('animation', function($timeout, $interval){
+  this.tag = (selector) => {
+    this.fadeIn(selector, 600)
+  }
+  this.fadeIn = (selector, duration) => {
+    const animation = { top: 0, left: 0, right: 0, bottom: 0, opacity: 1 };
+    const options = { duration: duration }
+    $(selector).animate(animation, options);
   }
 })
