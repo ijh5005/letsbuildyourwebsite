@@ -8,6 +8,7 @@ app.controller('ctrl', ['$rootScope', '$scope', '$interval', 'navigate', 'data',
   $rootScope.currentlySendingMessage = false;
   $rootScope.labelMessage = "";
   $rootScope.showLabelLabelMessage = false;
+  $rootScope.canRestartAnimation = false;
   $scope.messageType = 'email';
   $scope.emailStatus = 'selectedSendBtn';
   $scope.textStatus = '';
@@ -28,6 +29,9 @@ app.controller('ctrl', ['$rootScope', '$scope', '$interval', 'navigate', 'data',
   }
   $scope.sendMessage = () => {
     ($scope.messageType === 'email') ? task.sendMessage('email') : task.sendMessage('text');;
+  }
+  $scope.restartAnimation = () => {
+    ($rootScope.canRestartAnimation) ? task.typeUrl() : null;
   }
   task.typeUrl();
   task.watchForTagAnimation();
@@ -72,6 +76,8 @@ app.service('data', function(){
 
 app.service('task', function($rootScope, $timeout, $interval, animation, server){
   this.typeUrl = () => {
+    $rootScope.canRestartAnimation = false;
+    $('.url p').text("");
     $('.pageContent').hide();
     $(".url p").text('');
     let i = 1;
@@ -89,7 +95,10 @@ app.service('task', function($rootScope, $timeout, $interval, animation, server)
       if(i === $rootScope.url.length + 1){
         $('.urlCircle').css('opacity', 0.6).addClass('urlClicked');
         $timeout(() => { $('.urlCircle').css('opacity', 1).removeClass('urlClicked') }, 200);
-        $timeout(() => { $('.pageContent').fadeIn() }, 500);
+        $timeout(() => {
+          $('.pageContent').fadeIn();
+          $timeout(() => { $rootScope.canRestartAnimation = true; }, 600);
+        }, 500);
         i = 1;
       } else {
         i++;
