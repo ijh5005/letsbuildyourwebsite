@@ -61,12 +61,12 @@ app.service('data', function(){
   this.services = [
     {service: "website pages", price: "$50 each", description: "Includes a custom design. All content (ex: text, images, videos) you provide me with will be added."},
     {service: "payment/shopping cart", price: "$80", description: "Includes shopping cart and payment pages. I will also set up a third party payment service that is linked directly to your bank card. The service gives you access to customer payment history, receipts, refunds, and more."},
-    {service: "device friendly layout", price: "$25 each", description: "Have a website that also looks great on mobile phones and tablets."},
-    {service: "sign in/sign up", price: "$50", description: "Having an account connects you with your customers, gives them a since of ownerships, and offers them convenience such as faster checkout processes."},
-    {service: "email notifications", price: "$50", description: "Email your customers with promotional sales and members’ only deals for their customer loyalty. This feature is a computer and mobile web app. It will not display on your website."},
-    {service: "text notifications", price: "$50", description: "Text customers with appointment reminders, thank you notes, and exclusive deals. This feature is a computer and mobile web app. It will not display on your website."},
-    {service: "page animations", price: "$50", description: "Customers spend more on easy to use websites. Animations build an easy and smooth feelings experience. They also look nice :)"},
-    {service: "contact and feedback forms", price: "$50", description: "Offers a convenient way for customers to contact you with any questions any concerns. I will set up a feedback form and a contact form on any page of your website."}
+    {service: "device friendly layout", price: "$25 each", description: "Your website layout will fit devices of your choice including cell phones, tablets, desktops, and televisions."},
+    {service: "sign in/sign up", price: "$50", description: "Includes a sign in/sgin up forms page."},
+    {service: "email notifications", price: "$50", description: "An application to email your customers things such as promotional sales. This feature is a computer and mobile web app. It will not display on your website."},
+    {service: "text notifications", price: "$50", description: "An application to text customers things such as appointment reminders and thank you notes. This feature is a computer and mobile web app. It will not display on your website."},
+    {service: "page animations", price: "$50", description: "Custom animation to help your website stand out and build a smooth customer experience."},
+    {service: "contact and feedback forms", price: "$50", description: "A convenient way for customers to contact you with a feedback form and a contact form on a page of your website."}
   ]
 })
 
