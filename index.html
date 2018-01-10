@@ -92,28 +92,29 @@
         <p class="details">The following forms are linked to my email and cell phone. Try sending me a message with your name, contact, questions, and comments. I will get back to you as soon as I can!</p>
         <div class="flexRow">
           <div class="form flexCol">
-            <input type="text" name="" value="" placeholder="first name">
-            <input type="text" name="" value="" placeholder="email">
-            <textarea name="name" rows="8" cols="80" placeholder="message" data-gramm_editor="false"></textarea>
+            <label ng-if="showLabelLabelMessage">{{labelMessage}}</label>
+            <input id="first" type="text" name="" value="" placeholder="first name">
+            <input id="contact" type="text" name="" value="" placeholder="email or phone number">
+            <textarea id="message" name="name" rows="8" cols="80" placeholder="message" data-gramm_editor="false"></textarea>
             <div class="messageBtnSection flexRow">
-              <div class="sendEmailBtn selectedSendBtn flexRow">
+              <div class="sendEmailBtn flexRow pointer" ng-class="emailStatus" ng-click="changeMessageStatusToEmail()">
                 <p>email</p>
               </div>
-              <div class="sendTextBtn flexRow">
+              <div class="sendTextBtn flexRow pointer" ng-class="textStatus" ng-click="changeMessageStatusToText()">
                 <p>text</p>
               </div>
             </div>
           </div>
           <div class="sendBtnSection flexRow">
-            <div class="sendBtn flexCol pointer">
+            <div class="sendBtn flexCol pointer" ng-click="sendMessage()">
               <p>S</p><p>E</p><p>N</p><p>D</p>
             </div>
           </div>
           <div class="screen flexRow">
             <div class="arrowSection flexRow">
-              <p class="arrowOne">)</p>
-              <p class="arrowTwo">)</p>
-              <p class="arrowThree">)</p>
+              <p class="arrow arrowOne">)</p>
+              <p class="arrow arrowTwo">)</p>
+              <p class="arrow arrowThree">)</p>
             </div>
             <div class="device flexRow">
               <div class="deviceScreen flexRow">

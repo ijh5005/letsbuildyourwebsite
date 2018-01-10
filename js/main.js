@@ -4,15 +4,33 @@ var app = angular.module('app', []);
 
 app.controller('ctrl', ['$rootScope', '$scope', '$interval', 'navigate', 'data', 'task', function($rootScope, $scope, $interval, navigate, data, task){
   $rootScope.url = 'yourwebsite.com';
+  $rootScope.messageSent = false;
+  $rootScope.currentlySendingMessage = false;
+  $rootScope.labelMessage = "";
+  $rootScope.showLabelLabelMessage = false;
+  $scope.messageType = 'email';
+  $scope.emailStatus = 'selectedSendBtn';
+  $scope.textStatus = '';
   $scope.navigationPoints = data.navigationPoints;
   $scope.services = data.services;
+  $scope.changeMessageStatusToEmail = () => {
+    $scope.messageType = 'email';
+    $scope.emailStatus = 'selectedSendBtn';
+    $scope.textStatus = '';
+  }
+  $scope.changeMessageStatusToText = () => {
+    $scope.messageType = 'text';
+    $scope.emailStatus = '';
+    $scope.textStatus = 'selectedSendBtn';
+  }
   $scope.bringToTopOfPage = (e, dataValue) => {
     (dataValue === undefined) ? navigate.toTagWithEvent(e) : navigate.toTagWithDataValue(dataValue);
   }
+  $scope.sendMessage = () => {
+    ($scope.messageType === 'email') ? task.sendMessage('email') : task.sendMessage('text');;
+  }
   task.typeUrl();
   task.watchForTagAnimation();
-  // console.log(window);
-  $interval(() => { console.log(); }, 1000)
 }])
 
 app.service('navigate', function(){
@@ -52,10 +70,10 @@ app.service('data', function(){
   ]
 })
 
-app.service('task', function($rootScope, $timeout, $interval, animation){
+app.service('task', function($rootScope, $timeout, $interval, animation, server){
   this.typeUrl = () => {
     $('.pageContent').hide();
-    let delayTimes = [100, 200, 300, 400];
+    $(".url p").text('');
     let i = 1;
     let didntEraseYet = true;
     const $selector = $(".url p");
@@ -72,13 +90,13 @@ app.service('task', function($rootScope, $timeout, $interval, animation){
         $('.urlCircle').css('opacity', 0.6).addClass('urlClicked');
         $timeout(() => { $('.urlCircle').css('opacity', 1).removeClass('urlClicked') }, 200);
         $timeout(() => { $('.pageContent').fadeIn() }, 500);
+        i = 1;
       } else {
         i++;
         $selector.text(text);
         const delay = (Math.floor(Math.random() * 3) + 1) * 100;
         $timeout(() => { typeText() }, delay);
       }
-
     }
     $timeout(() => { typeText() }, 1000);
   }
@@ -91,9 +109,41 @@ app.service('task', function($rootScope, $timeout, $interval, animation){
       }
     })
   }
+  this.sendMessage = (messageType) => {
+    if($rootScope.currentlySendingMessage){ return null }
+    $rootScope.currentlySendingMessage = true;
+    const first = $("#first").val();
+    const contact = $("#contact").val();
+    const message = $("#message").val();
+    const sendObj = { first: first, contact: contact, message: message };
+    const hasEmpytField = this.hasEmpytField(sendObj);
+    if(hasEmpytField){
+      $rootScope.labelMessage = "you must fill out all fields. thanks!";
+      $rootScope.showLabelLabelMessage = true;
+      $rootScope.currentlySendingMessage = false;
+      $timeout(() => { $rootScope.showLabelLabelMessage = false; }, 4000);
+      return null;
+    }
+    const sendEmail = () => {
+      animation.sendSignal();
+      server.sendEmail(sendObj);
+      $timeout(() => { $rootScope.messageSent = true }, 6000);
+    }
+    const sendText = () => {
+      animation.sendSignal();
+      server.sendText(sendObj);
+      $timeout(() => { $rootScope.messageSent = true }, 6000);
+    }
+    (messageType === 'email') ? sendEmail() : sendText();
+  }
+  this.hasEmpytField = (obj) => {
+    const values = Object.values(obj);
+    const hasEmptyField = values.includes("") || values.includes(undefined);
+    return hasEmptyField;
+  }
 })
 
-app.service('animation', function($timeout, $interval){
+app.service('animation', function($rootScope, $timeout, $interval){
   this.tag = (selector) => {
     this.fadeIn(selector, 600)
   }
@@ -101,5 +151,45 @@ app.service('animation', function($timeout, $interval){
     const animation = { top: 0, left: 0, right: 0, bottom: 0, opacity: 1 };
     const options = { duration: duration }
     $(selector).animate(animation, options);
+  }
+  this.sendSignal = () => {
+    const selector = [".arrowOne", ".arrowTwo", ".arrowThree"];
+    let index = 0;
+    $('.screen').css('transform', 'rotateY(0deg)');
+    const sendingMessage = $interval(() => {
+      if($rootScope.messageSent){
+        $interval.cancel(sendingMessage);
+        $('.arrow').css('opacity', 0);
+        $rootScope.messageSent = false;
+        $rootScope.currentlySendingMessage = false;
+        $('.deviceScreen').addClass('messageSent');
+
+        //send label message
+        $rootScope.labelMessage = "message sent!";
+        $rootScope.showLabelLabelMessage = true;
+        $timeout(() => { $rootScope.showLabelLabelMessage = false; }, 4000);
+
+        $timeout(() => {
+          $('.screen').css('transform', 'rotateY(90deg)');
+          $('.deviceScreen').removeClass('messageSent');
+        }, 4000);
+      } else {
+        (index === selector.length) ? index = 0 : null;
+        $('.arrow').css('opacity', 0);
+        $(selector[index]).css('opacity', 1);
+        index++
+      }
+    }, 500);
+  }
+})
+
+app.service('server', function($http){
+  this.sendEmail = (obj) => {
+    console.log('email');
+    console.log(obj);
+  }
+  this.sendText = (obj) => {
+    console.log('text');
+    console.log(obj);
   }
 })
